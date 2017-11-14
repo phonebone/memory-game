@@ -14,4 +14,4 @@ Have fun!
 
 ## License
 
-[MIT](LICENCE.txt)
+[MIT](LICENCE)
