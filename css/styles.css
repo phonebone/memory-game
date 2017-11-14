@@ -1,0 +1,367 @@
+@font-face {
+  font-family: 'icomoon';
+  src:  url('fonts/icomoon.eot?3amh4r');
+  src:  url('fonts/icomoon.eot?3amh4r#iefix') format('embedded-opentype'),
+    url('fonts/icomoon.ttf?3amh4r') format('truetype'),
+    url('fonts/icomoon.woff?3amh4r') format('woff'),
+    url('fonts/icomoon.svg?3amh4r#icomoon') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+/*
+   The colors and button styles are copied from Drunken Parrot UI:
+   https://hoarrd.github.io/drunken-parrot-flat-ui/
+   Icon font is from icomoon: https://icomoon.io/
+*/
+
+*, *::before, *::after {
+  -webkit-box-sizing: inherit;
+  -moz-box-sizing: inherit;
+  box-sizing: inherit;
+}
+
+::-moz-selection {
+    background: #b5e7f7;
+    color: #222;
+    text-shadow: none;
+}
+
+::selection {
+    background: #b5e7f7;
+    color: #222;
+    text-shadow: none;
+}
+
+html {
+  line-height: 1.4;
+  -ms-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+  font-family: 'Work Sans', sans-serif;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  background-color: #fad46b;
+  text-align: center;
+}
+
+a {
+  text-decoration: none;
+  -webkit-transition: 0.25s;
+  transition: 0.25s;
+}
+a:hover,
+a:focus {
+  text-decoration: none;
+}
+a:focus {
+  outline: none;
+}
+
+h1, h2, h3, h4 {
+  color: #f84545;
+}
+h1 {
+  font-family: Verdana, sans-serif;
+  font-size: 3rem;
+  margin-bottom: 0;
+}
+h2 {
+  font-weight: 200;
+  font-size: 1.2em;
+}
+
+#game {
+  width: 100%;
+  max-width: 480px;
+  position: relative;
+  margin: 0 auto;
+  background-color: #364347;
+
+  padding: 2.8em 2em 2em;
+  border-radius: 16px;
+}
+
+#game h4 {
+  background-color: rgba(0,0,0,0.5);
+  font-family: monospace;
+  font-size: 1rem;
+  font-weight: normal;
+  color: #02baf2;
+  line-height: 1.4;
+  text-align: left;
+  margin: 0 .85em 0 .85em;
+  padding: 1em 1.25em;
+  border-radius: 8px;
+  box-shadow: inset #000 0 0 8px;
+}
+
+.stars {
+  color: #fad46b;
+}
+
+#field {
+  padding: 2%;
+  perspective: 1200px;
+  position: relative;
+}
+#field::after {
+  clear: both;
+  display: block;
+  content: '';
+}
+
+.tile {
+  float: left;
+  position: relative;
+  width: 23%;
+  padding-bottom: 23%;
+  margin: 1%;
+  text-align: center;
+  border-radius: 8px;
+  cursor: pointer;
+  color: #fff;
+
+  transform-style: preserve-3d;
+  transition: .6s;
+}
+
+.tile.flipped,
+.tile.success {
+  transform: rotateY(180deg);
+}
+
+.success figure.back {
+  background-size: 100%;
+  animation: flash 3s 1 forwards;
+}
+
+@keyframes flash {
+  0% {
+    background-color: #02baf2;
+  }
+  4% {
+    background-color: #3eb5ac;
+  }
+  25% {
+    background-color: #3eb5ac;
+  }
+  100% {
+    background-color: #28948c;
+  }
+}
+
+.tile figure {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  display: block;
+  border-radius: inherit;
+
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  padding-top: 34%;
+
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'icomoon' !important;
+  speak: none;
+  font-size: 6.666666667vw;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  /* Better Font Rendering */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+figure.front {
+  background-color: #93a4aa;
+  z-index: 1;
+  transform: rotateY(0deg);
+}
+
+figure.back {
+  background-color: #02baf2;
+  transform: rotateY(180deg);
+}
+
+button {
+  font-family: Verdana, Helvetica, Arial, sans-serif;
+  border: 1px solid transparent;
+  font-size: 1.25rem;
+  font-weight: normal;
+  line-height: 1.45;
+  border-radius: 6px;
+  padding: .67em;
+  text-transform: uppercase;
+  -webkit-font-smoothing: subpixel-antialiased;
+  -webkit-transition: all .25s linear;
+  transition: all .25s linear;
+
+  color: #fff;
+
+  -webkit-transition: border .25s linear, color .25s linear, background-color .25s linear;
+  transition: border .25s linear, color .25s linear, background-color .25s linear;
+
+  white-space: normal;
+  width: 67%;
+  margin: 1em 0 .5em;
+  cursor: pointer;
+}
+
+button:focus,
+button:hover,
+button:active,
+button:active:focus {
+  outline: none;
+}
+button:hover,
+button:focus {
+  top: 2px;
+  position: relative;
+}
+button:active {
+  top: 5px;
+}
+
+#reset {
+  background-color: #02baf2;
+  -webkit-box-shadow: 0 5px #009dcd;
+  box-shadow: 0 6px #009dcd;
+}
+#reset:focus,
+#reset:hover,
+#reset:active,
+#reset:active:focus {
+  background-color: #02baf2;
+  border-color: #02baf2;
+}
+#reset:hover,
+#reset:focus {
+  -webkit-box-shadow: 0 3px #009dcd;
+  box-shadow: 0 3px #009dcd;
+}
+#reset:active {
+  -webkit-box-shadow: 0 0 #009dcd;
+  box-shadow: 0 0 #009dcd;
+  border-color: #02baf2;
+}
+
+
+#playagain {
+  background-color: #fad46b;
+  -webkit-box-shadow: 0 5px #f3bc65;
+  box-shadow: 0 5px #f3bc65;
+  width: 33%;
+  margin: 1em 0 .5em;
+}
+#playagain:focus,
+#playagain:hover,
+#playagain:active,
+#playagain:active:focus {
+  background-color: #fbdd89;
+  border-color: #fbdd89;
+}
+#playagain:hover,
+#playagain:focus {
+  -webkit-box-shadow: 0 3px #f3bc65;
+  box-shadow: 0 3px #f3bc65;
+}
+#playagain:active {
+  -webkit-box-shadow: 0 0 #f3bc65;
+  box-shadow: 0 0 #f3bc65;
+  border-color: #fad46b;
+}
+
+
+#closepopup {
+  background-color: #f84545;
+  -webkit-box-shadow: 0 5px #cc0000;
+  box-shadow: 0 5px #cc0000;
+  width: 33%;
+  margin: 1em 0 .5em;
+}
+#closepopup:focus,
+#closepopup:hover,
+#closepopup:active,
+#closepopup:active:focus {
+  background-color: #f84545;
+  border-color: #f84545;
+}
+#closepopup:hover,
+#closepopup:focus {
+    -webkit-box-shadow: 0 3px #cc0000;
+  box-shadow: 0 3px #cc0000;
+}
+#closepopup:active {
+    -webkit-box-shadow: 0 0 #cc0000;
+  box-shadow: 0 0 #cc0000;
+  border-color: #f84545;
+}
+
+
+#hooray{
+  background-color: rgba(0, 195, 255, .92);
+  color: #fff;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 16px;
+  padding-top: 15%;
+  display: none;
+}
+#hooray.show {
+  display: block;
+}
+#hooray h3 {
+  color: #fff;
+  font-size: 2.5em;
+  margin-bottom: 0;
+}
+
+[data-tile-picture="pacman"]:before {
+  content: "\e916";
+}
+[data-tile-picture="bug"]:before {
+  content: "\e999";
+}
+[data-tile-picture="sphere"]:before {
+  content: "\e9c9";
+}
+[data-tile-picture="smile"]:before {
+  content: "\e9e1";
+}
+[data-tile-picture="code"]:before {
+  content: "\ea80";
+}
+[data-tile-picture="terminal"]:before {
+  content: "\ea81";
+}
+[data-tile-picture="stackoverflow"]:before {
+  content: "\ead0";
+}
+[data-tile-picture="firefox"]:before {
+  content: "\eada";
+}
+[data-tile-picture="git"]:before {
+  content: "\eae7";
+}
+
+@media (min-width: 400px) {
+  .tile figure {
+    font-size: 6.666666667vw;
+  }
+}
+@media (min-width: 480px) {
+  .tile figure {
+    font-size: 2em;
+  }
+  #hooray{
+    padding-top: 25%;
+  }
+}
