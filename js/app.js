@@ -4,6 +4,7 @@ let moveCounter,
     timeCounter,
     starCounter,
     gameTimer,
+    resetBtn,
     moves = 0,
     matches = 0,
     numstars = 3,
@@ -18,9 +19,10 @@ function init(){
   moveCounter = document.getElementById('move-count');
   timeCounter = document.getElementById('elapsedtime');
   starCounter = document.getElementById('stars');
+  resetBtn = document.getElementById('reset');
 
   document.getElementById('field').addEventListener('click', flipTile, false);
-  document.getElementById('reset').addEventListener('click', resetGame, false);
+  resetBtn.addEventListener('click', resetGame, false);
   document.getElementById('hooray').addEventListener('click', closePopup, false);
 
   newGame();
@@ -116,6 +118,7 @@ function flipTile(e){
 }
 
 function resetGame(){
+  resetBtn.setAttribute("disabled", "");
   moves = 0;
   matches = 0;
   numstars = 3;
@@ -147,6 +150,7 @@ function resetGame(){
   // Start a new game, but wait untill the tiles have turned back, so you can't see the new images allready
   setTimeout(function(){
     newGame();
+    resetBtn.removeAttribute("disabled", "");
   }, 600);
 }
 
