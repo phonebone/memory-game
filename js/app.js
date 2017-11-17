@@ -82,6 +82,8 @@ function flipTile(e){
     updateStarRating();
     if(numActiveTiles === 0){
       activeTiles.push(e.target.parentNode);
+      // Start the timer for this game if this is the first card clicked on
+      if(!gameTimer) gameTimer = timer('start');
     } else if (numActiveTiles === 1) {
       activeTiles.push(e.target.parentNode);
 
@@ -127,6 +129,7 @@ function resetGame(){
   updateStarRating();
   updateMoves(0);
   timer(gameTimer);
+  displayTime(0);
 
   // Gather all the tiles that are turned with the image up
   const flippedTiles = arrayOf(document.getElementsByClassName('flipped'));
@@ -165,8 +168,6 @@ function newGame(){
     const backside = tile.getElementsByClassName('back')[0];
     backside.dataset.tilePicture = randomArray[index];
   });
-  // Start the timer for this game
-  gameTimer = timer('start');
 }
 
 function updateMoves(n){
@@ -183,6 +184,7 @@ function timer(cmnd){
     return timer;
   } else {
     clearInterval(cmnd);
+    gameTimer = 0;
     time = 0;
   }
 }
