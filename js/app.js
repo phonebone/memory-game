@@ -78,14 +78,15 @@ function flipTile(e){
     const numActiveTiles = activeTiles.length;
     e.target.parentNode.classList.toggle('flipped');
 
-    updateMoves(1);
-    updateStarRating();
     if(numActiveTiles === 0){
       activeTiles.push(e.target.parentNode);
       // Start the timer for this game if this is the first card clicked on
       if(!gameTimer) gameTimer = timer('start');
     } else if (numActiveTiles === 1) {
       activeTiles.push(e.target.parentNode);
+
+      updateMoves(1);
+      updateStarRating();
 
       // Test for match:
       const pictureOne = activeTiles[0].lastElementChild.dataset.tilePicture;
