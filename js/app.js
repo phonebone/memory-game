@@ -52,13 +52,13 @@ function closePopup(e){
 }
 
 function updateStarRating(){
-  if(moves < 32 && moves > 24){
+  if(moves < 16 && moves > 12){
     numstars = 2;
     rating = '★★☆';
-  } else if (moves < 40 && moves >= 32) {
+  } else if (moves < 20 && moves >= 16) {
     numstars = 1;
     rating = '★☆☆';
-  } else if (moves >= 40) {
+  } else if (moves >= 20) {
     numstars = 1;
     rating = '★☆☆';
   }
